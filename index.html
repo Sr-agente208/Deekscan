@@ -24,7 +24,7 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
     body{font-family:'DM Sans',sans-serif;background:var(--p900);color:var(--text);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;font-size:calc(1rem * var(--font-scale));}
-
+ 
     /* ── DESKTOP NAV ── */
     .desk-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:14px 32px;background:rgba(30,10,64,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(196,132,252,0.12);}
     .nav-left{display:flex;align-items:center;gap:24px;}
@@ -43,7 +43,7 @@
     .nav-avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--p600),var(--p400));display:flex;align-items:center;justify-content:center;font-size:0.82rem;font-weight:700;color:#fff;cursor:pointer;border:2px solid rgba(196,132,252,0.3);transition:all .2s;flex-shrink:0;}
     .nav-avatar:hover{border-color:var(--accent);}
     .btn-nav-login{padding:7px 18px;background:var(--p500);color:#fff;border:none;border-radius:20px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:0.8rem;cursor:pointer;transition:all .2s;}
-
+ 
     /* ── MOBILE TOP BAR ── */
     .mob-topbar{display:none;position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nav-h);background:rgba(30,10,64,0.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(196,132,252,0.1);align-items:center;justify-content:space-between;padding:0 16px;}
     .mob-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:var(--accent);}
@@ -54,7 +54,7 @@
     .mob-plan-dot.gold{background:var(--gold);}
     .mob-plan-dot.green{background:var(--green);}
     .btn-mob-login{padding:6px 13px;background:var(--p500);color:#fff;border:none;border-radius:16px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:0.76rem;cursor:pointer;}
-
+ 
     /* ── MOBILE BOTTOM NAV ── */
     .mob-bottom-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;height:calc(var(--bottom-h) + var(--safe-bottom));padding-bottom:var(--safe-bottom);background:rgba(30,10,64,0.97);backdrop-filter:blur(24px);border-top:1px solid rgba(196,132,252,0.13);align-items:flex-start;justify-content:space-around;padding-top:8px;}
     .mob-nav-item{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:4px 10px;border-radius:10px;transition:all .2s;-webkit-tap-highlight-color:transparent;min-width:46px;}
@@ -65,43 +65,43 @@
     .mob-nav-item.active .mob-nav-label{color:var(--accent);}
     .mob-nav-pip{width:4px;height:4px;border-radius:50%;background:var(--accent);margin-top:1px;opacity:0;transition:opacity .2s;}
     .mob-nav-item.active .mob-nav-pip{opacity:1;}
-
+ 
     /* ─────────────────────────────────────
        MODOS DE ACESSIBILIDADE (body classes)
     ───────────────────────────────────── */
     /* Skip link */
     .skip-link{position:fixed;top:-80px;left:12px;z-index:9999;background:var(--p500);color:#fff;padding:10px 20px;border-radius:9px;font-weight:700;font-size:.88rem;text-decoration:none;transition:top .2s;box-shadow:0 4px 14px rgba(0,0,0,.3);}
     .skip-link:focus{top:10px;}
-
+ 
     /* Screen reader only */
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
-
+ 
     /* Focus ring global */
     *:focus-visible{outline:3px solid var(--accent) !important;outline-offset:3px !important;border-radius:4px;}
-
+ 
     /* Alto contraste */
     body.hc{--p900:#000000;--p800:#08001e;--p700:#160050;--p600:#2c00a8;--p500:#5200c8;--p400:#7600f8;--p300:#a840ff;--p200:#c880ff;--p100:#ecdeff;--p50:#f7eeff;--accent:#e000ff;--text:#000000;--muted:#1a0040;--white:#ffffff;--bg-contrast:#ede4f7;--card-bg:#ffffff;}
     body.hc .desk-nav,body.hc .mob-topbar{background:#000 !important;}
     body.hc .mob-bottom-nav{background:#000 !important;border-top:2px solid var(--p500) !important;}
     body.hc .hero{background:linear-gradient(180deg,#000 0%,#14005a 100%) !important;}
     body.hc .plan-card,body.hc .result-card,body.hc .doc-section{border:2px solid var(--p400) !important;}
-
+ 
     /* Sem animações */
     body.no-anim *,body.no-anim *::before,body.no-anim *::after{
       animation-duration:0ms !important;transition-duration:0ms !important;
     }
-
+ 
     /* Fonte para dislexia */
     body.dyslexic,body.dyslexic input,body.dyslexic textarea,body.dyslexic button,body.dyslexic select{
       font-family:'OpenDyslexic','DM Sans',sans-serif !important;
       letter-spacing:.06em !important;word-spacing:.16em !important;line-height:1.9 !important;
     }
-
+ 
     /* Modo leitura */
     body.reading-mode p,body.reading-mode li,body.reading-mode .result-reasoning,body.reading-mode .doc-text{
       line-height:2.1 !important;letter-spacing:.03em !important;max-width:68ch;
     }
-
+ 
     /* Modo daltônico — substitui verde/vermelho por azul/preto */
     body.colorblind .result-verdict.fake,body.colorblind .compare-verdict-badge.fake{background:rgba(0,0,0,.11) !important;color:#000 !important;border-left:4px solid #000 !important;}
     body.colorblind .result-verdict.real,body.colorblind .compare-verdict-badge.real{background:rgba(0,80,220,.11) !important;color:#003baa !important;border-left:4px solid #003baa !important;}
@@ -110,28 +110,28 @@
     body.colorblind .compare-bar-fill{background:linear-gradient(90deg,#0044bb,#3377ff) !important;}
     body.colorblind .consensus-fake{background:rgba(0,0,0,.08) !important;border-color:#000 !important;}
     body.colorblind .consensus-real{background:rgba(0,80,220,.08) !important;border-color:#003baa !important;}
-
+ 
     /* ── ACCESSIBILITY BUTTON + PANEL ── */
     .a11y-btn{position:fixed;bottom:calc(var(--bottom-h) + var(--safe-bottom) + 70px);right:16px;z-index:190;width:46px;height:46px;border-radius:50%;background:rgba(22,0,80,0.94);border:2px solid rgba(168,64,255,0.45);color:var(--accent);font-size:1.15rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(22,0,80,0.45);transition:all .2s;-webkit-tap-highlight-color:transparent;}
     .a11y-btn:hover,.a11y-btn:focus-visible{border-color:var(--accent);transform:scale(1.07);outline:none;}
-
+ 
     .a11y-panel{position:fixed;bottom:calc(var(--bottom-h) + var(--safe-bottom) + 124px);right:16px;z-index:189;width:296px;background:#fff;border-radius:18px;box-shadow:0 16px 48px rgba(22,0,80,0.22);border:1px solid var(--p200);transform:scale(0.9) translateY(14px);transform-origin:bottom right;opacity:0;pointer-events:none;transition:all .28s cubic-bezier(.34,1.56,.64,1);}
     .a11y-panel.open{opacity:1;pointer-events:all;transform:scale(1) translateY(0);}
-
+ 
     .a11y-panel-header{padding:15px 17px 12px;border-bottom:1px solid var(--p100);display:flex;align-items:center;justify-content:space-between;}
     .a11y-panel-title{font-family:'Syne',sans-serif;font-weight:800;font-size:.9rem;color:var(--p700);display:flex;align-items:center;gap:7px;}
     .a11y-panel-close{width:26px;height:26px;border-radius:7px;background:var(--p100);border:none;cursor:pointer;color:var(--muted);font-size:.85rem;display:flex;align-items:center;justify-content:center;transition:all .18s;}
     .a11y-panel-close:hover{background:var(--p200);color:var(--p700);}
-
+ 
     .a11y-panel-body{padding:14px 17px 16px;}
     .a11y-section-label{font-size:.68rem;font-weight:700;color:var(--p400);letter-spacing:.8px;text-transform:uppercase;margin:10px 0 8px;}
     .a11y-section-label:first-child{margin-top:0;}
-
+ 
     .a11y-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;gap:8px;}
     .a11y-row:last-child{margin-bottom:0;}
     .a11y-label{font-size:.8rem;color:var(--text);font-weight:500;flex:1;}
     .a11y-label small{display:block;font-size:.68rem;color:var(--muted);font-weight:400;margin-top:1px;line-height:1.3;}
-
+ 
     /* Toggle switch */
     .toggle{position:relative;width:42px;height:24px;flex-shrink:0;}
     .toggle input{opacity:0;width:0;height:0;position:absolute;}
@@ -141,21 +141,21 @@
     .toggle input:checked ~ .toggle-thumb{transform:translateX(18px);}
     /* Focus nos toggles */
     .toggle input:focus-visible + .toggle-track{outline:3px solid var(--accent);outline-offset:2px;border-radius:12px;}
-
+ 
     /* Controle de tamanho de fonte */
     .font-size-ctrl{display:flex;align-items:center;gap:7px;flex-shrink:0;}
     .fs-btn{width:32px;height:32px;border-radius:9px;border:1.5px solid var(--p200);background:none;cursor:pointer;font-family:'Syne',sans-serif;font-weight:700;color:var(--p600);transition:all .18s;display:flex;align-items:center;justify-content:center;font-size:.8rem;}
     .fs-btn:hover{background:var(--p100);border-color:var(--p400);}
     .fs-value{font-family:'Syne',sans-serif;font-weight:700;font-size:.82rem;color:var(--p700);min-width:34px;text-align:center;}
-
+ 
     /* Reset link no painel */
     .a11y-reset-row{display:flex;justify-content:center;padding-top:10px;margin-top:10px;border-top:1px solid var(--p100);}
     .a11y-reset-btn{background:none;border:none;cursor:pointer;font-size:.74rem;color:var(--muted);font-family:'DM Sans',sans-serif;text-decoration:underline;padding:0;transition:color .2s;}
     .a11y-reset-btn:hover{color:var(--red);}
-
+ 
     /* Indicador visual de modo ativo no botão */
     .a11y-btn.active-mode{background:var(--p600) !important;border-color:var(--accent) !important;}
-
+ 
     /* ── OVERLAY / MODAL ── */
     .overlay{position:fixed;inset:0;z-index:300;background:rgba(10,2,25,0.7);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s;padding:20px;}
     .overlay.open{opacity:1;pointer-events:all;}
@@ -167,7 +167,7 @@
     .modal-close:hover{background:var(--p100);color:var(--p700);}
     .modal-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.05rem;color:var(--p500);margin-bottom:18px;}
     .modal-logo span{color:var(--text);}
-
+ 
     /* auth */
     .auth-tabs{display:flex;border-bottom:2px solid var(--p100);margin-bottom:18px;}
     .auth-tab{flex:1;padding:9px;background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.86rem;font-weight:500;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .2s;}
@@ -192,7 +192,7 @@
     .plan-pill.pro{background:linear-gradient(135deg,var(--p500),var(--accent));color:#fff;}
     .plan-pill.team{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:#1a0a30;}
     .plan-pill.enterprise{background:linear-gradient(135deg,#059669,#34d399);color:#fff;}
-
+ 
     /* dev code */
     .dev-code-wrap{margin-bottom:13px;border:1.5px solid var(--p200);border-radius:10px;overflow:hidden;transition:border-color .2s;}
     .dev-code-wrap.unlocked{border-color:#34d399;background:rgba(52,211,153,0.04);}
@@ -217,7 +217,7 @@
     .dev-banner-title{font-family:'Syne',sans-serif;font-weight:800;font-size:0.8rem;color:#065f46;}
     .dev-banner-sub{font-size:0.7rem;color:#047857;margin-top:1px;}
     .dev-banner-badge{background:linear-gradient(135deg,#059669,#34d399);color:#fff;font-size:0.66rem;font-weight:700;padding:3px 8px;border-radius:20px;white-space:nowrap;font-family:'Syne',sans-serif;}
-
+ 
     /* ── KEYS PAGE ── */
     .keys-page{min-height:100vh;background:var(--bg-contrast);padding:calc(var(--nav-h)+16px) 20px 60px;}
     .keys-wrap{max-width:720px;margin:0 auto;}
@@ -225,16 +225,16 @@
     .keys-header-icon{font-size:2.4rem;margin-bottom:10px;}
     .keys-header h2{font-family:'Syne',sans-serif;font-size:clamp(1.4rem,4vw,1.9rem);font-weight:800;color:var(--p700);margin-bottom:6px;}
     .keys-header p{color:var(--muted);font-size:0.86rem;}
-
+ 
     .kp-tabs{display:flex;gap:6px;margin-bottom:22px;background:var(--card-bg);border:1px solid var(--p200);border-radius:14px;padding:6px;}
     .kp-tab{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;padding:10px 8px;border:none;border-radius:10px;background:transparent;cursor:pointer;font-family:'Syne',sans-serif;font-weight:700;font-size:0.82rem;color:var(--muted);transition:all .22s;-webkit-tap-highlight-color:transparent;}
     .kp-tab:hover{background:var(--p100);color:var(--p700);}
     .kp-tab.active{background:var(--p500);color:#fff;box-shadow:0 4px 14px rgba(123,47,190,0.28);}
     .kp-tab-logo{font-size:1rem;}
-
+ 
     .kp-panel{display:none;}
     .kp-panel.active{display:block;animation:fadeUp .3s ease;}
-
+ 
     .kp-provider-badge{display:flex;align-items:center;gap:13px;padding:16px 18px;border-radius:14px;margin-bottom:16px;border:1.5px solid;}
     .claude-badge{background:linear-gradient(135deg,rgba(192,132,252,0.1),rgba(123,47,190,0.06));border-color:rgba(192,132,252,0.35);}
     .gpt-badge{background:linear-gradient(135deg,rgba(16,163,127,0.1),rgba(16,163,127,0.05));border-color:rgba(16,163,127,0.35);}
@@ -244,7 +244,7 @@
     .kpb-model{font-size:0.72rem;color:var(--muted);margin-top:2px;font-family:monospace;}
     .kpb-cost{margin-left:auto;font-size:0.7rem;font-weight:700;color:var(--muted);background:var(--p100);padding:4px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0;}
     .kpb-free{background:rgba(52,211,153,0.15);color:#059669;}
-
+ 
     .kp-link-btn{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;padding:13px;background:linear-gradient(135deg,var(--p600),var(--p500));color:#fff;text-decoration:none;border-radius:12px;font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:22px;transition:all .22s;box-shadow:0 6px 20px rgba(123,47,190,0.25);}
     .kp-link-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(123,47,190,0.35);}
     .kp-link-btn.gpt-btn{background:linear-gradient(135deg,#10a37f,#1a7a60);box-shadow:0 6px 20px rgba(16,163,127,0.25);}
@@ -252,7 +252,7 @@
     .kp-link-btn.isitai-btn{background:linear-gradient(135deg,#3b82f6,#1d4ed8);box-shadow:0 6px 20px rgba(59,130,246,0.25);}
     .kp-link-btn.isitai-btn:hover{box-shadow:0 10px 28px rgba(59,130,246,0.35);}
     .kp-link-arrow{font-size:1rem;opacity:0.8;}
-
+ 
     .kp-steps{display:flex;flex-direction:column;gap:0;background:var(--card-bg);border:1px solid var(--p200);border-radius:14px;overflow:hidden;margin-bottom:16px;}
     .kp-step{display:flex;gap:0;padding:16px 18px;border-bottom:1px solid var(--p100);transition:background .18s;}
     .kp-step:last-child{border-bottom:none;}
@@ -264,12 +264,12 @@
     .kp-step-desc strong{color:var(--p700);}
     .kp-step-desc em{color:var(--p500);font-style:normal;}
     .kp-step-desc code{background:var(--p100);color:var(--p600);border-radius:5px;padding:1px 6px;font-size:0.78rem;font-family:monospace;}
-
+ 
     .kp-tip{display:flex;align-items:flex-start;gap:10px;padding:13px 16px;border-radius:12px;font-size:0.8rem;line-height:1.5;background:rgba(192,132,252,0.08);border:1px solid rgba(192,132,252,0.25);color:var(--p700);}
     .kp-tip.warn{background:rgba(251,191,36,0.08);border-color:rgba(251,191,36,0.35);color:#92400e;}
     .kp-tip.green{background:rgba(52,211,153,0.08);border-color:rgba(52,211,153,0.3);color:#065f46;}
     .kp-tip-icon{font-size:1rem;flex-shrink:0;margin-top:1px;}
-
+ 
     @media(max-width:768px){
       .keys-page{padding:calc(var(--nav-h)+10px) 13px calc(var(--bottom-h)+22px);}
       .kp-tab{font-size:0.74rem;padding:9px 4px;}
@@ -324,7 +324,7 @@
       100%{box-shadow:0 0 0 0 rgba(52,211,153,0);}
     }
     .dev-code-wrap.lightning-unlocked{animation:dev-unlock-pulse 0.8s ease-out 0.6s;}
-
+ 
     /* plans */
     .plans-heading h2{font-family:'Syne',sans-serif;font-weight:800;font-size:1.35rem;color:var(--text);margin-bottom:4px;}
     .plans-heading p{color:var(--muted);font-size:0.84rem;}
@@ -348,7 +348,7 @@
     .btn-plan.active-plan{background:var(--p500);color:#fff;opacity:0.6;cursor:default;}
     .btn-plan.gold-btn{border-color:var(--gold);color:var(--gold);}
     .btn-plan.gold-btn:hover{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:#1a0a30;border-color:transparent;}
-
+ 
     /* profile */
     .profile-section{margin-bottom:18px;}
     .profile-section-label{font-size:0.68rem;font-weight:700;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:9px;}
@@ -390,7 +390,7 @@
     .btn-cancel-delete:hover{background:var(--p200);}
     .btn-confirm-delete{flex:1;padding:11px;background:linear-gradient(135deg,#dc2626,#f87171);border:none;border-radius:10px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:.85rem;color:#fff;cursor:pointer;transition:all .2s;}
     .btn-confirm-delete:hover{background:linear-gradient(135deg,#b91c1c,#ef4444);}
-
+ 
     /* ── GENERATED API KEYS ── */
     .gen-key-box{background:var(--p50);border:1px solid var(--p200);border-radius:12px;padding:14px;}
     .gen-key-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
@@ -405,11 +405,11 @@
     .gen-key-date{font-size:0.66rem;color:var(--muted);flex-shrink:0;}
     .gen-key-actions{display:flex;gap:4px;flex-shrink:0;}
     .no-gen-keys{font-size:0.78rem;color:var(--muted);text-align:center;padding:10px 0;}
-
+ 
     /* ── SECTIONS ── */
     .section{display:none;}
     .section.active{display:block;}
-
+ 
     /* ── HERO ── */
     .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column;background:radial-gradient(ellipse 80% 55% at 50% -5%,rgba(123,47,190,0.45) 0%,transparent 65%),var(--p900);padding:100px 20px 80px;text-align:center;position:relative;overflow:hidden;}
     .hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(196,132,252,0.07) 1px,transparent 1px);background-size:32px 32px;pointer-events:none;}
@@ -434,7 +434,7 @@
     .ppc-perks{list-style:none;display:flex;flex-direction:column;gap:2px;}
     .ppc-perks li{font-size:0.69rem;color:rgba(255,255,255,0.44);display:flex;align-items:center;gap:4px;}
     .ppc-perks li::before{content:'✓';color:var(--green);font-size:0.66rem;}
-
+ 
     /* ── ANALYZER ── */
     .analyzer-page{min-height:100vh;background:var(--bg-contrast);padding:calc(var(--nav-h)+16px) 20px 60px;}
     .analyzer-wrap{max-width:900px;margin:0 auto;}
@@ -542,11 +542,11 @@
     .consensus-score{font-size:clamp(2.2rem,7vw,3rem);font-weight:800;font-family:'Syne',sans-serif;margin:11px 0 4px;}
     .consensus-badges{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:11px;}
     .c-badge{background:rgba(255,255,255,0.14);border-radius:100px;padding:4px 11px;font-size:0.72rem;font-weight:600;}
-
+ 
     /* ── AUTH LINK BUTTON ── */
     .auth-link-btn{background:none;border:none;color:var(--p500);font-weight:700;cursor:pointer;font-size:inherit;padding:0;text-decoration:underline;}
     .auth-link-btn:hover{color:var(--p400);}
-
+ 
     /* ══ CHECKOUT ══ */
     .checkout-inner{padding:28px 28px 24px;max-width:480px;width:100%;}
     .checkout-inner h2{font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;color:var(--p700);margin-bottom:20px;}
@@ -586,9 +586,9 @@
     .ck-secure-note{text-align:center;font-size:.68rem;color:var(--muted);margin-top:10px;}
     /* Drawer checkout */
     .checkout-drawer-inner{padding:20px 18px 30px;overflow-y:auto;max-height:calc(90vh - 40px);}
-
+ 
     /* ── FIM CHECKOUT ── */
-
+ 
     .compare-page{min-height:100vh;background:var(--bg-contrast);padding:calc(var(--nav-h)+16px) 20px 80px;}
     .compare-wrap{max-width:1000px;margin:0 auto;}
     .compare-header{text-align:center;margin-bottom:28px;}
@@ -650,7 +650,7 @@
     .compare-ai-chip.selected{border-color:var(--p500);background:var(--p100);color:var(--p700);font-weight:600;}
     .compare-ai-chip.locked{opacity:0.5;cursor:not-allowed;}
     .compare-ai-chip-icon{font-size:0.9rem;}
-
+ 
     /* ── DOCS ── */
     .docs-page{min-height:100vh;background:var(--bg-contrast);padding:calc(var(--nav-h)+16px) 20px 60px;}
     .docs-wrap{max-width:860px;margin:0 auto;}
@@ -687,7 +687,7 @@
     .flow-step .fs-num{font-family:'Syne',sans-serif;font-weight:800;font-size:1.15rem;color:var(--p500);margin-bottom:2px;}
     .flow-step .fs-icon{font-size:1.15rem;margin-bottom:4px;}
     .flow-step .fs-label{font-size:0.7rem;font-weight:600;color:var(--p600);}
-
+ 
     /* ── DRAWER ── */
     .drawer-overlay{position:fixed;inset:0;z-index:300;background:rgba(10,2,25,0.65);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .3s;}
     .drawer-overlay.open{opacity:1;pointer-events:all;}
@@ -710,13 +710,13 @@
     .mob-plan-row-features{font-size:0.7rem;color:var(--p400);margin-top:1px;}
     .mob-select-btn{padding:5px 12px;border-radius:7px;font-size:0.7rem;font-weight:700;border:1.5px solid var(--p500);color:var(--p500);background:none;font-family:'Syne',sans-serif;cursor:pointer;white-space:nowrap;}
     .mob-select-btn.current{background:var(--p500);color:#fff;opacity:0.65;}
-
+ 
     /* ── TOAST / ERROR ── */
     .toast{position:fixed;bottom:calc(var(--bottom-h) + var(--safe-bottom) + 10px);left:50%;transform:translateX(-50%) translateY(18px);z-index:400;background:var(--p700);color:#fff;border-radius:11px;padding:11px 18px;font-size:0.82rem;font-weight:500;box-shadow:0 8px 26px rgba(30,10,64,0.32);opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap;max-width:calc(100vw - 28px);text-align:center;}
     .toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
     .error-msg{background:rgba(248,113,113,0.09);border:1px solid rgba(248,113,113,0.28);color:#dc2626;border-radius:9px;padding:10px 13px;font-size:0.79rem;margin-top:9px;display:none;}
     .error-msg.show{display:block;}
-
+ 
     /* ══════ MOBILE ══════ */
     @media (max-width:768px){
       .desk-nav{display:none !important;}
@@ -751,7 +751,7 @@
   </style>
 </head>
 <body>
-
+ 
 <!-- ════ DESKTOP NAV ════ -->
 <nav class="desk-nav">
   <div class="nav-left">
@@ -766,13 +766,13 @@
   </div>
   <div class="nav-right" id="navRight"></div>
 </nav>
-
+ 
 <!-- ════ MOBILE TOP BAR ════ -->
 <header class="mob-topbar" id="mobTopbar">
   <div class="mob-logo">Deep<span>Scan</span></div>
   <div class="mob-topbar-right" id="mobTopbarRight"></div>
 </header>
-
+ 
 <!-- ════ MOBILE BOTTOM NAV ════ -->
 <nav class="mob-bottom-nav">
   <div class="mob-nav-item active" id="mnav-home" onclick="showSection('home')">
@@ -794,23 +794,23 @@
     <div class="mob-nav-icon">👤</div><div class="mob-nav-label" id="mobNavProfileLabel">Perfil</div><div class="mob-nav-pip"></div>
   </div>
 </nav>
-
+ 
 <!-- Skip to main content (acessibilidade por teclado) -->
 <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
-
+ 
 <!-- ════ ACCESSIBILITY BUTTON + PANEL ════ -->
 <button class="a11y-btn" id="a11yBtn" onclick="toggleA11y()" aria-label="Opções de acessibilidade" aria-expanded="false" aria-controls="a11yPanel" title="Acessibilidade">♿</button>
-
+ 
 <div class="a11y-panel" id="a11yPanel" role="dialog" aria-modal="true" aria-label="Opções de acessibilidade" aria-hidden="true">
   <div class="a11y-panel-header">
     <div class="a11y-panel-title">♿ Acessibilidade</div>
     <button class="a11y-panel-close" onclick="toggleA11y()" aria-label="Fechar painel de acessibilidade">✕</button>
   </div>
   <div class="a11y-panel-body">
-
+ 
     <!-- VISÃO -->
     <div class="a11y-section-label">Visão</div>
-
+ 
     <div class="a11y-row">
       <div class="a11y-label">Tamanho do texto
         <small>Ajuste o tamanho das letras</small>
@@ -821,7 +821,7 @@
         <button class="fs-btn" onclick="changeFontSize(1)" aria-label="Aumentar tamanho do texto">A+</button>
       </div>
     </div>
-
+ 
     <div class="a11y-row">
       <label class="a11y-label" for="toggleHC">Alto contraste
         <small>Reforça contrastes de cor</small>
@@ -832,7 +832,7 @@
         <div class="toggle-thumb"></div>
       </label>
     </div>
-
+ 
     <div class="a11y-row">
       <label class="a11y-label" for="toggleColorblind">Modo daltônico
         <small>Diferencia resultados por forma</small>
@@ -843,10 +843,10 @@
         <div class="toggle-thumb"></div>
       </label>
     </div>
-
+ 
     <!-- MOVIMENTO -->
     <div class="a11y-section-label">Movimento & Leitura</div>
-
+ 
     <div class="a11y-row">
       <label class="a11y-label" for="toggleMotion">Reduzir animações
         <small>Remove transições e movimentos</small>
@@ -857,7 +857,7 @@
         <div class="toggle-thumb"></div>
       </label>
     </div>
-
+ 
     <div class="a11y-row">
       <label class="a11y-label" for="toggleReading">Modo leitura
         <small>Espaçamento ampliado nos textos</small>
@@ -868,7 +868,7 @@
         <div class="toggle-thumb"></div>
       </label>
     </div>
-
+ 
     <div class="a11y-row">
       <label class="a11y-label" for="toggleDyslexic">Fonte dislexia
         <small>Usa fonte OpenDyslexic</small>
@@ -879,14 +879,14 @@
         <div class="toggle-thumb"></div>
       </label>
     </div>
-
+ 
     <!-- Reset -->
     <div class="a11y-reset-row">
       <button class="a11y-reset-btn" onclick="resetA11y()">↺ Restaurar padrões</button>
     </div>
   </div>
 </div>
-
+ 
 <!-- ════ AUTH OVERLAY ════ -->
 <div class="overlay" id="authOverlay">
   <div class="modal" style="max-width:420px">
@@ -919,7 +919,7 @@
     </div>
   </div>
 </div>
-
+ 
 <!-- ════ PLANS OVERLAY ════ -->
 <div class="overlay" id="plansOverlay">
   <div class="modal" style="max-width:880px">
@@ -931,7 +931,7 @@
     </div>
   </div>
 </div>
-
+ 
 <!-- ════ PROFILE OVERLAY ════ -->
 <div class="overlay" id="profileOverlay">
   <div class="modal" style="max-width:520px">
@@ -962,7 +962,7 @@
       <button class="btn-delete-account" onclick="closeOverlay('profileOverlay');openConfirmDelete()">🗑️ Apagar conta permanentemente</button>    </div>
   </div>
 </div>
-
+ 
 <!-- ════ MOBILE DRAWERS ════ -->
 <div class="drawer-overlay" id="authDrawerOverlay" onclick="closeDrawer('authDrawer')"></div>
 <div class="drawer" id="authDrawer">
@@ -993,14 +993,14 @@
     </div>
   </div>
 </div>
-
+ 
 <div class="drawer-overlay" id="plansDrawerOverlay" onclick="closeDrawer('plansDrawer')"></div>
 <div class="drawer" id="plansDrawer">
   <div class="drawer-handle"></div>
   <div class="drawer-header"><div class="drawer-title">💎 Planos</div><button class="drawer-close" onclick="closeDrawer('plansDrawer')">✕</button></div>
   <div class="drawer-body"><p style="font-size:.8rem;color:var(--muted);margin-bottom:13px">Escolha o plano ideal</p><div class="mob-plans-grid" id="mobPlansGrid"></div></div>
 </div>
-
+ 
 <div class="drawer-overlay" id="profileDrawerOverlay" onclick="closeDrawer('profileDrawer')"></div>
 <div class="drawer" id="profileDrawer">
   <div class="drawer-handle"></div>
@@ -1046,7 +1046,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- ════ ANALYZER ════ -->
 <section id="analyzer" class="section">
   <div class="analyzer-page">
@@ -1092,7 +1092,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- ════ COMPARE ════ -->
 <section id="compare" class="section">
   <div class="compare-page">
@@ -1101,7 +1101,7 @@
         <h2>⚖️ Comparador IA vs. Real</h2>
         <p>Envie dois arquivos e descubra qual foi feito por IA e qual é autêntico</p>
       </div>
-
+ 
       <!-- AI selector -->
       <div class="api-config" style="margin-bottom:16px">
         <div class="api-config-title"><div class="icon">🤖</div> Modelo de análise</div>
@@ -1109,7 +1109,7 @@
         <div id="compareKeyWrap"></div>
         <div class="api-actions"><button class="btn-save-key" onclick="saveKeys()">💾 Salvar chaves</button></div>
       </div>
-
+ 
       <!-- Upload slots -->
       <div class="compare-grid" id="compareGrid">
         <!-- Slot A -->
@@ -1155,17 +1155,17 @@
           </div>
         </div>
       </div>
-
+ 
       <button class="btn-compare" id="btnCompare" onclick="runCompare()" disabled>⚖️ Comparar os dois arquivos</button>
       <div class="error-msg" id="compareError"></div>
-
+ 
       <!-- Winner box -->
       <div class="compare-winner-box" id="compareWinner">
         <div class="compare-winner-label">RESULTADO DA COMPARAÇÃO</div>
         <div class="compare-winner-title" id="compareWinnerTitle">—</div>
         <div class="compare-winner-desc" id="compareWinnerDesc">—</div>
       </div>
-
+ 
       <!-- Detail cards -->
       <div class="compare-detail-grid" id="compareDetailGrid">
         <div class="compare-detail-card">
@@ -1184,7 +1184,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- ════ DOCS ════ -->
 <section id="docs" class="section">
   <div class="docs-page">
@@ -1216,7 +1216,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- ════ KEYS SECTION ════ -->
 <section id="keys" class="section">
   <div class="keys-page">
@@ -1226,7 +1226,7 @@
         <h2>Como obter suas chaves API</h2>
         <p>Siga o passo a passo para cada provedor e cole as chaves no Analisador</p>
       </div>
-
+ 
       <!-- TABS -->
       <div class="kp-tabs">
         <button class="kp-tab active" onclick="switchKeyTab('claude',this)">
@@ -1239,7 +1239,7 @@
           <span class="kp-tab-logo">🔍</span> IsItAI
         </button>
       </div>
-
+ 
       <!-- ── CLAUDE ── -->
       <div class="kp-panel active" id="kpanel-claude">
         <div class="kp-provider-badge claude-badge">
@@ -1250,12 +1250,12 @@
           </div>
           <div class="kpb-cost">Pago por uso</div>
         </div>
-
+ 
         <a class="kp-link-btn" href="https://platform.anthropic.com/settings/keys" target="_blank" rel="noopener">
           🚀 Abrir Console Anthropic
           <span class="kp-link-arrow">↗</span>
         </a>
-
+ 
         <div class="kp-steps">
           <div class="kp-step">
             <div class="kp-step-num">1</div>
@@ -1293,13 +1293,13 @@
             </div>
           </div>
         </div>
-
+ 
         <div class="kp-tip">
           <div class="kp-tip-icon">💡</div>
           <div><strong>Custo estimado:</strong> cada análise custa aproximadamente <strong>$0.01–0.03</strong> dependendo do modelo.</div>
         </div>
       </div>
-
+ 
       <!-- ── GPT-4o ── -->
       <div class="kp-panel" id="kpanel-gpt">
         <div class="kp-provider-badge gpt-badge">
@@ -1310,12 +1310,12 @@
           </div>
           <div class="kpb-cost">Pago por uso</div>
         </div>
-
+ 
         <a class="kp-link-btn gpt-btn" href="https://platform.openai.com/api-keys" target="_blank" rel="noopener">
           🚀 Abrir Plataforma OpenAI
           <span class="kp-link-arrow">↗</span>
         </a>
-
+ 
         <div class="kp-steps">
           <div class="kp-step">
             <div class="kp-step-num">1</div>
@@ -1353,13 +1353,13 @@
             </div>
           </div>
         </div>
-
+ 
         <div class="kp-tip warn">
           <div class="kp-tip-icon">⚠️</div>
           <div><strong>Erro de quota?</strong> Isso significa que não há crédito na conta. Adicione pelo menos $5 em <strong>Settings → Billing</strong> para ativar.</div>
         </div>
       </div>
-
+ 
       <!-- ── IsItAI ── -->
       <div class="kp-panel" id="kpanel-isitai">
         <div class="kp-provider-badge isitai-badge">
@@ -1370,12 +1370,12 @@
           </div>
           <div class="kpb-cost kpb-free">Tem plano grátis</div>
         </div>
-
+ 
         <a class="kp-link-btn isitai-btn" href="https://isitai.com" target="_blank" rel="noopener">
           🚀 Abrir IsItAI.com
           <span class="kp-link-arrow">↗</span>
         </a>
-
+ 
         <div class="kp-steps">
           <div class="kp-step">
             <div class="kp-step-num">1</div>
@@ -1406,19 +1406,19 @@
             </div>
           </div>
         </div>
-
+ 
         <div class="kp-tip green">
           <div class="kp-tip-icon">✅</div>
           <div><strong>Detector especializado:</strong> O IsItAI é treinado especificamente para detectar imagens geradas por IA — excelente para complementar o Claude e o GPT.</div>
         </div>
       </div>
-
+ 
     </div>
   </div>
 </section>
-
+ 
 <div class="toast" id="toast"></div>
-
+ 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ══════════════════════════════════════
    PLANS
@@ -1429,7 +1429,7 @@ const PLANS={
   team:{label:'Team',icon:'🏢',price:'R$ 39',period:'/mês',tagline:'Para times e organizações.',monthlyLimit:1000,aiAccess:['claude','gpt','isitai'],badge:'🥇 Melhor custo-benefício',badgeClass:'gold',features:['1.000 análises por mês','Todos os modelos (incl. IsItAI)','Até 5 membros','Painel admin','API + relatórios','Suporte prioritário'],locked:[]},
   enterprise:{label:'Enterprise',icon:'🚀',price:'R$ 99',period:'/mês',tagline:'Escala total para empresas.',monthlyLimit:Infinity,aiAccess:['claude','gpt','isitai'],features:['Análises ilimitadas','Todos os modelos','Membros ilimitados','API dedicada + webhooks','SLA 99.9%','Suporte 24/7'],locked:[]},
 };
-
+ 
 /* ══════════════════════════════════════
    STORE
 ══════════════════════════════════════ */
@@ -1444,7 +1444,7 @@ const Store={
   setCurrentEmail(e){try{e?localStorage.setItem('ds_cur4',e):localStorage.removeItem('ds_cur4')}catch{}},
 };
 // Sem contas pré-carregadas — usuário começa do zero
-
+ 
 /* ══════════════════════════════════════
    STATE
 ══════════════════════════════════════ */
@@ -1461,17 +1461,17 @@ const state={
 const AI_CONFIGS={
   claude: {name:'Claude (Anthropic)', model:'claude-opus-4-6',  logo:'🤖', call:callClaude},
   gpt:    {name:'GPT-4o (OpenAI)',    model:'gpt-4o',            logo:'🧠', call:callGPT},
-
+ 
   isitai: {name:'IsItAI (Detector)', model:'isitai-detect-v1',  logo:'🔍', call:callIsItAI},
 };
-
+ 
 /* ══════════════════════════════════════
    ACCESSIBILITY (WCAG 2.1 AA)
 ══════════════════════════════════════ */
 let a11yOpen = false;
 let fontScale = 100;
 const a11yState = { hc:false, noAnim:false, dyslexic:false, reading:false, colorblind:false };
-
+ 
 function toggleA11y() {
   a11yOpen = !a11yOpen;
   const panel = document.getElementById('a11yPanel');
@@ -1484,7 +1484,7 @@ function toggleA11y() {
     setTimeout(() => panel.querySelector('button, input')?.focus(), 60);
   }
 }
-
+ 
 // Fecha painel ao clicar fora
 document.addEventListener('click', e => {
   const panel = document.getElementById('a11yPanel');
@@ -1496,7 +1496,7 @@ document.addEventListener('click', e => {
     btn.setAttribute('aria-expanded', 'false');
   }
 });
-
+ 
 // Fecha com Escape
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && a11yOpen) {
@@ -1507,40 +1507,40 @@ document.addEventListener('keydown', e => {
     document.getElementById('a11yBtn').focus();
   }
 });
-
+ 
 function changeFontSize(dir) {
   fontScale = Math.min(160, Math.max(75, fontScale + dir * 10));
   document.documentElement.style.setProperty('--font-scale', fontScale / 100);
   document.getElementById('fsValue').textContent = fontScale + '%';
   saveA11yPrefs();
 }
-
+ 
 function applyA11y() {
   a11yState.hc         = document.getElementById('toggleHC').checked;
   a11yState.noAnim     = document.getElementById('toggleMotion').checked;
   a11yState.dyslexic   = document.getElementById('toggleDyslexic').checked;
   a11yState.reading    = document.getElementById('toggleReading').checked;
   a11yState.colorblind = document.getElementById('toggleColorblind').checked;
-
+ 
   document.body.classList.toggle('hc',          a11yState.hc);
   document.body.classList.toggle('no-anim',     a11yState.noAnim);
   document.body.classList.toggle('dyslexic',    a11yState.dyslexic);
   document.body.classList.toggle('reading-mode',a11yState.reading);
   document.body.classList.toggle('colorblind',  a11yState.colorblind);
-
+ 
   // Atualiza aria-checked dos toggles
   ['toggleHC','toggleMotion','toggleDyslexic','toggleReading','toggleColorblind'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.setAttribute('aria-checked', String(el.checked));
   });
-
+ 
   // Indicador visual no botão ♿ quando algum modo está ativo
   const anyActive = Object.values(a11yState).some(Boolean) || fontScale !== 100;
   document.getElementById('a11yBtn').classList.toggle('active-mode', anyActive);
-
+ 
   saveA11yPrefs();
 }
-
+ 
 function resetA11y() {
   fontScale = 100;
   document.documentElement.style.setProperty('--font-scale', '1');
@@ -1555,11 +1555,11 @@ function resetA11y() {
   saveA11yPrefs();
   showToast('♿ Acessibilidade redefinida.');
 }
-
+ 
 function saveA11yPrefs() {
   try { localStorage.setItem('ds_a11y', JSON.stringify({ ...a11yState, fontScale })); } catch {}
 }
-
+ 
 function loadA11yPrefs() {
   try {
     const p = JSON.parse(localStorage.getItem('ds_a11y') || '{}');
@@ -1590,7 +1590,7 @@ function loadA11yPrefs() {
     }
   } catch {}
 }
-
+ 
 /* ══════════════════════════════════════
    NAV
 ══════════════════════════════════════ */
@@ -1610,14 +1610,14 @@ function showSection(id){
 }
 function requireAuth(section){if(state.user)showSection(section);else{state._pendingSection=section;openAuth();}}
 function openAuth(){if(isMobile())openDrawer('authDrawer');else openOverlay('authOverlay');}
-
+ 
 /* ══════════════════════════════════════
    OVERLAYS + DRAWERS
 ══════════════════════════════════════ */
 function openOverlay(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden';}
 function closeOverlay(id){document.getElementById(id).classList.remove('open');document.body.style.overflow='';}
 document.querySelectorAll('.overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)closeOverlay(o.id);}));
-
+ 
 let activeDrawer=null;
 function openDrawer(id){
   if(activeDrawer)closeDrawer(activeDrawer);
@@ -1638,11 +1638,11 @@ function initDrawerSwipe(drawer,id){
   document.ontouchmove=e=>{if(!drag)return;currY=e.touches[0].clientY-startY;if(currY>0)drawer.style.transform=`translateY(${currY}px)`;};
   document.ontouchend=()=>{if(!drag)return;drag=false;drawer.style.transition='';drawer.style.transform='';if(currY>90)closeDrawer(id);};
 }
-
+ 
 function openPlans(){if(isMobile()){renderMobPlansGrid();openDrawer('plansDrawer');}else{renderPlansGrid();openOverlay('plansOverlay');}}
 function openProfile(){if(isMobile()){renderMobProfileDrawer();openDrawer('profileDrawer');}else{renderProfileModal();openOverlay('profileOverlay');}}
 function handleProfileNav(){if(state.user)openProfile();else openAuth();}
-
+ 
 /* ══════════════════════════════════════
    DEV CODE
 ══════════════════════════════════════ */
@@ -1687,7 +1687,7 @@ function checkDevCode(val,p){
     devUnlocked=false;
   }
 }
-
+ 
 /* ══════════════════════════════════════
    AUTH
 ══════════════════════════════════════ */
@@ -1746,7 +1746,7 @@ function doDeleteAccount(){
   renderNav();showSection('home');
   showToast('🗑️ Conta apagada com sucesso.');
 }
-
+ 
 /* ══════════════════════════════════════
    API KEY GENERATOR
 ══════════════════════════════════════ */
@@ -1785,7 +1785,7 @@ function renderGenKeyList(containerId){
       </div>
     </div>`).join('');
 }
-
+ 
 /* ══════════════════════════════════════
    NAV RENDER
 ══════════════════════════════════════ */
@@ -1806,7 +1806,7 @@ function renderNav(){
   mobRight.innerHTML=`<div class="mob-plan-dot ${dotClass}"></div><div class="mob-avatar" onclick="openProfile()">${initials}</div>`;
   mobLabel.textContent=u.name.split(' ')[0];
 }
-
+ 
 /* ══════════════════════════════════════
    PLANS
 ══════════════════════════════════════ */
@@ -1843,7 +1843,7 @@ function selectPlan(key){
   openCheckout(key);
 }
 function contactEnterprise(){openCheckout('enterprise');}
-
+ 
 /* ══════════════════════════════════════
    CHECKOUT
 ══════════════════════════════════════ */
@@ -1908,7 +1908,7 @@ function doCheckoutD(){_processCheckout('ckd',()=>closeDrawer('checkoutDrawer'))
 function showCkError(msg,prefix='ck'){const e=document.getElementById(prefix+'Error');if(e){e.textContent='⚠️ '+msg;e.classList.add('show');}}
 function formatCardNum(el){let v=el.value.replace(/\D/g,'').slice(0,16);el.value=v.replace(/(.{4})/g,'$1 ').trim();}
 function formatCardExp(el){let v=el.value.replace(/\D/g,'').slice(0,4);if(v.length>=2)v=v.slice(0,2)+'/'+v.slice(2);el.value=v;}
-
+ 
 /* ══════════════════════════════════════
    PROFILE
 ══════════════════════════════════════ */
@@ -1952,7 +1952,7 @@ function renderSavedKeysList(cid){
 }
 function copyKey(id){const u=state.user;if(!u)return;const v=(u.apiKeys||{})[id];if(v){navigator.clipboard.writeText(v).catch(()=>{});showToast('🔑 Chave copiada!');}}
 function deleteKey(id,cid){const u=state.user;if(!u)return;const keys={...(u.apiKeys||{})};delete keys[id];delete state.apiKeys[id];Store.updateUser(u.email,{apiKeys:keys});renderSavedKeysList(cid);showToast('Chave removida.');}
-
+ 
 /* ══════════════════════════════════════
    KEYS
 ══════════════════════════════════════ */
@@ -1985,7 +1985,7 @@ function saveKeys(){
   const b=document.getElementById('keysSavedBadge');if(b)b.classList.add('show');
   showToast(`✅ ${saved} chave${saved>1?'s':''} salva${saved>1?'s':''}!`);
 }
-
+ 
 /* ══════════════════════════════════════
    ANALYZER UI
 ══════════════════════════════════════ */
@@ -2029,7 +2029,7 @@ function toggleAI(id){
   else state.selectedAIs.add(id);
   renderAICards();
 }
-
+ 
 /* ══════════════════════════════════════
    COMPARE UI
 ══════════════════════════════════════ */
@@ -2161,7 +2161,7 @@ function renderCompareWinner(rA,rB){
   document.getElementById('detailConfB').textContent=confLabel(rB.prob>50?rB.prob:100-rB.prob);
   document.getElementById('compareDetailGrid').classList.add('show');
 }
-
+ 
 /* ══════════════════════════════════════
    FILE HANDLING (analyzer)
 ══════════════════════════════════════ */
@@ -2193,7 +2193,7 @@ const zone=document.getElementById('uploadZone');
 zone.addEventListener('dragover',e=>{e.preventDefault();zone.classList.add('drag-over');});
 zone.addEventListener('dragleave',()=>zone.classList.remove('drag-over'));
 zone.addEventListener('drop',e=>{e.preventDefault();zone.classList.remove('drag-over');if(e.dataTransfer.files[0])handleFile(e.dataTransfer.files[0]);});
-
+ 
 /* ══════════════════════════════════════
    ANALYSIS
 ══════════════════════════════════════ */
@@ -2202,17 +2202,17 @@ async function runAnalysis(){
   if(state.remaining===0){showToast('⚠️ Limite atingido!');openPlans();return;}
   const activeAIs=[...state.selectedAIs];
   if(!state.fileData){showError('Envie um arquivo primeiro.');return;}
-
+ 
   // Coleta chaves: campo digitado > chave salva na conta
   activeAIs.forEach(id=>{
     const el=document.getElementById('key-'+id);
     if(el&&el.value.trim()) state.apiKeys[id]=el.value.trim();
   });
-
+ 
   const missing=activeAIs.filter(id=>!state.apiKeys[id]);
   if(missing.length){showError(`Configure a chave para: ${missing.map(id=>AI_CONFIGS[id].name).join(', ')}`);return;}
   hideError();
-
+ 
   document.getElementById('btnAnalyze').disabled=true;
   document.getElementById('resultsGrid').innerHTML='';
   document.getElementById('consensusBox').classList.remove('show');
@@ -2246,12 +2246,12 @@ async function runAnalysis(){
   Store.updateUser(state.user.email,{usedThisMonth:(state.user.usedThisMonth||0)+1});
   renderAnalyzerUI();document.getElementById('btnAnalyze').disabled=false;showToast('✅ Análise concluída!');
 }
-
+ 
 // Timeout helper
 function withTimeout(promise,ms){
   return Promise.race([promise,new Promise((_,rej)=>setTimeout(()=>rej(new Error(`Tempo esgotado (${ms/1000}s). Verifique sua conexão.`)),ms))]);
 }
-
+ 
 // Mensagens de erro amigáveis
 function friendlyError(msg){
   if(!msg) return 'Erro desconhecido.';
@@ -2264,11 +2264,11 @@ function friendlyError(msg){
   if(/tempo esgotado/i.test(msg)) return msg;
   return `Erro: ${msg}`;
 }
-
+ 
 /* ══════════════════════════════════════
    AI CALLS — corrigidas
 ══════════════════════════════════════ */
-
+ 
 // Redimensiona imagem para evitar erros 413 / rejeição por tamanho
 async function resizeForAPI(b64,mime,maxPx=1120){
   return new Promise(res=>{
@@ -2286,7 +2286,7 @@ async function resizeForAPI(b64,mime,maxPx=1120){
     img.src=`data:${mime};base64,${b64}`;
   });
 }
-
+ 
 async function callClaude(ctx){
   const {data,mime}=await resizeForAPI(state.fileData,state.fileType||'image/jpeg');
   const body={
@@ -2319,7 +2319,7 @@ async function callClaude(ctx){
   const json=await res.json();
   return parseAIResponse(json.content?.find(b=>b.type==='text')?.text||'');
 }
-
+ 
 async function callGPT(ctx){
   const {data,mime}=await resizeForAPI(state.fileData,state.fileType||'image/jpeg',1080);
   const body={
@@ -2347,7 +2347,7 @@ async function callGPT(ctx){
   const json=await res.json();
   return parseAIResponse(json.choices?.[0]?.message?.content||'');
 }
-
+ 
 async function callIsItAI(ctx){
   const mime=state.fileType||'image/jpeg';
   const ext=mime.includes('png')?'png':mime.includes('webp')?'webp':'jpg';
@@ -2398,7 +2398,7 @@ async function callIsItAI(ctx){
      'IsItAI não obteve conclusão definitiva.');
   return{prob,verdict,reasoning};
 }
-
+ 
 function buildPrompt(ctx){
   return `Você é especialista forense em detecção de deepfakes e imagens/vídeos gerados por IA.
 Analise esta imagem com máxima atenção técnica.
@@ -2407,7 +2407,7 @@ ${ctx?`Contexto extra: ${ctx}`:''}
 Responda APENAS em JSON válido, sem markdown, sem texto extra:
 {"prob":<0-100>,"verdict":"<fake|real|uncertain>","reasoning":"<3-4 frases técnicas específicas>"}`;
 }
-
+ 
 function parseAIResponse(text){
   if(!text) return{prob:50,verdict:'uncertain',reasoning:'Resposta vazia da API.'};
   try{
@@ -2450,7 +2450,7 @@ function renderConsensus(results){
   document.getElementById('consensusBadges').innerHTML=results.map(r=>`<span class="c-badge">${AI_CONFIGS[r.id].logo} ${r.prob}%</span>`).join('');
   document.getElementById('consensusBox').classList.add('show');
 }
-
+ 
 /* ══════════════════════════════════════
    UTILS
 ══════════════════════════════════════ */
@@ -2460,7 +2460,7 @@ function sleep(ms){return new Promise(r=>setTimeout(r,ms));}
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3200);}
 function showError(msg){const el=document.getElementById('errorMsg');el.textContent='⚠️ '+msg;el.classList.add('show');}
 function hideError(){document.getElementById('errorMsg').classList.remove('show');}
-
+ 
 /* ══════════════════════════════════════
    KEY GUIDE TABS
 ══════════════════════════════════════ */
@@ -2470,7 +2470,7 @@ function switchKeyTab(id, btn) {
   btn.classList.add('active');
   document.getElementById('kpanel-' + id).classList.add('active');
 }
-
+ 
 /* ══════════════════════════════════════
    LIGHTNING ANIMATION
 ══════════════════════════════════════ */
@@ -2480,21 +2480,21 @@ function triggerLightning(){
   flash.className='lightning-flash';
   document.body.appendChild(flash);
   requestAnimationFrame(()=>{flash.classList.add('active');});
-
+ 
   // Shake body
   document.body.classList.add('lightning-shake');
   setTimeout(()=>document.body.classList.remove('lightning-shake'),450);
-
+ 
   // Overlay
   const overlay=document.getElementById('lightning-overlay');
   overlay.innerHTML='';
   overlay.classList.add('active');
-
+ 
   const W=window.innerWidth;
   const boltCount=Math.floor(2+Math.random()*3);
   const positions=[0.25,0.5,0.75];
   const spread=[0.18,0.62,0.38,0.82,0.5];
-
+ 
   for(let i=0;i<boltCount;i++){
     const xFrac=spread[i%spread.length]+(Math.random()-0.5)*0.12;
     const x=Math.min(W-40,Math.max(20,xFrac*W));
@@ -2523,14 +2523,14 @@ function triggerLightning(){
     </svg>`;
     overlay.appendChild(bolt);
   }
-
+ 
   // Thunder sound (visual only — just a satisfying timing)
   setTimeout(()=>{
     overlay.classList.remove('active');
     overlay.innerHTML='';
     flash.remove();
   },1400);
-
+ 
   // Pulse the unlock wrap
   const wraps=document.querySelectorAll('.dev-code-wrap.unlocked');
   wraps.forEach(w=>{
@@ -2539,7 +2539,7 @@ function triggerLightning(){
     w.classList.add('lightning-unlocked');
   });
 }
-
+ 
 // Init
 loadA11yPrefs();
 renderNav();
@@ -2591,7 +2591,7 @@ if(state.user)loadSavedKeys();
     </div>
   </div>
 </div>
-
+ 
 <!-- ════ CHECKOUT DRAWER (mobile) ════ -->
 <div class="drawer" id="checkoutDrawer" role="dialog" aria-modal="true" aria-label="Checkout">
   <div class="drawer-handle" id="checkoutDrawer-handle"></div>
@@ -2662,7 +2662,7 @@ if(state.user)loadSavedKeys();
     </div>
   </div>
 </div>
-
+ 
 <div id="lightning-overlay"></div>
 </body>
 </html>
