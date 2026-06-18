@@ -436,7 +436,7 @@
     .ppc-perks li::before{content:'✓';color:var(--green);font-size:0.66rem;}
  
     /* ── ANALYZER ── */
-    .analyzer-page{min-height:100vh;background:var(--bg-contrast);padding:calc(var(--nav-h)+16px) 20px 60px;}
+    .analyzer-page{min-height:100vh;background:var(--bg-contrast);padding:calc(var(--nav-h)+16px) 20px calc(var(--bottom-h)+100px);}
     .analyzer-wrap{max-width:900px;margin:0 auto;}
     .analyzer-header{text-align:center;margin-bottom:26px;}
     .analyzer-header h2{font-family:'Syne',sans-serif;font-size:clamp(1.4rem,4.5vw,1.8rem);font-weight:800;color:var(--p700);margin-bottom:5px;}
@@ -537,9 +537,6 @@
     .result-reasoning strong{color:var(--p600);}
     .consensus-box{background:linear-gradient(135deg,#1a0d2e,#2d1a4a);color:#fff;border-radius:16px;padding:32px 24px;margin-top:20px;display:none;text-align:center;box-shadow:0 16px 48px rgba(208,132,255,0.25);border:1px solid rgba(208,132,255,0.2);backdrop-filter:blur(10px);position:relative;overflow:hidden;}
     .consensus-box.show{display:block;animation:fadeUp .6s cubic-bezier(0.34,1.56,0.64,1);}
-    .consensus-box.fake{background:linear-gradient(135deg,#7f1d1d,#991b1b) !important;}
-    .consensus-box.real{background:linear-gradient(135deg,#065f46,#047857) !important;}
-    .consensus-box.uncertain{background:linear-gradient(135deg,#78350f,#92400e) !important;}
     .consensus-label{font-size:0.72rem;opacity:0.75;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:8px;font-weight:600;}
     .consensus-verdict{font-family:'Syne',sans-serif;font-size:clamp(1.3rem,4vw,2rem);font-weight:800;margin-bottom:8px;text-shadow:0 2px 8px rgba(0,0,0,0.3);}
     .consensus-desc{opacity:0.68;font-size:0.84rem;max-width:440px;margin:0 auto;}
@@ -2435,10 +2432,10 @@ function renderConsensus(results){
   const fakes=results.filter(r=>r.verdict==='fake').length,reals=results.filter(r=>r.verdict==='real').length;
   const verdict=avg>65?'fake':avg<35?'real':'uncertain';
   const box=document.getElementById('consensusBox');
-  box.className='consensus-box '+verdict;
+  // box.className='consensus-box '+verdict; // Removed dynamic color classes
   document.getElementById('consensusScore').textContent=avg+'%';
-  document.getElementById('consensusLabel').textContent=avg>65?'ALERTA DE DEEPFAKE':avg<35?'CONTEUDO AUTENTICO':'ANALISE INCONCLUSIVA';
-  document.getElementById('consensusVerdict').textContent=avg>65?'DEEPFAKE DETECTADO':avg<35?'VIDEO AUTENTICO':'RESULTADO INCONCLUSIVO';
+  document.getElementById('consensusLabel').textContent=avg>65?'ALERTA: DEEPFAKE DETECTADO':avg<35?'CONTEUDO AUTENTICO':'RESULTADO INCONCLUSIVO';
+  document.getElementById('consensusVerdict').textContent=avg>65?'Manipulacao Identificada':avg<35?'Imagem Autentica':'Resultado Incerto';
   document.getElementById('consensusDesc').textContent=avg>65?`${fakes} de ${results.length} IAs identificaram padroes de manipulacao. Recomenda-se cautela ao compartilhar.`:avg<35?`${reals} de ${results.length} IAs confirmaram autenticidade. Conteudo parece genuino.`:'As IAs divergiram. Analise especializada recomendada.';
   document.getElementById('consensusBadges').innerHTML=results.map(r=>`<span class="c-badge">${AI_CONFIGS[r.id].logo} ${r.prob}%</span>`).join('');
   box.classList.add('show');
