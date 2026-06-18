@@ -535,14 +535,18 @@
     .prob-fill.low{background:linear-gradient(90deg,#059669,#34d399);}
     .result-reasoning{font-size:0.77rem;color:#4b3a6e;line-height:1.6;background:var(--p50);border-radius:7px;padding:9px;border-left:3px solid var(--p300);}
     .result-reasoning strong{color:var(--p600);}
-    .consensus-box{background:linear-gradient(135deg,var(--p800),var(--p600));color:#fff;border-radius:13px;padding:22px;margin-top:18px;display:none;text-align:center;}
-    .consensus-box.show{display:block;animation:fadeUp .5s ease;}
-    .consensus-label{font-size:0.72rem;opacity:0.62;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;}
-    .consensus-verdict{font-family:'Syne',sans-serif;font-size:clamp(1.1rem,3.5vw,1.7rem);font-weight:800;margin-bottom:5px;}
+    .consensus-box{background:linear-gradient(135deg,#1a0d2e,#2d1a4a);color:#fff;border-radius:16px;padding:32px 24px;margin-top:20px;display:none;text-align:center;box-shadow:0 16px 48px rgba(208,132,255,0.25);border:1px solid rgba(208,132,255,0.2);backdrop-filter:blur(10px);position:relative;overflow:hidden;}
+    .consensus-box.show{display:block;animation:fadeUp .6s cubic-bezier(0.34,1.56,0.64,1);}
+    .consensus-box.fake{background:linear-gradient(135deg,#7f1d1d,#991b1b) !important;}
+    .consensus-box.real{background:linear-gradient(135deg,#065f46,#047857) !important;}
+    .consensus-box.uncertain{background:linear-gradient(135deg,#78350f,#92400e) !important;}
+    .consensus-label{font-size:0.72rem;opacity:0.75;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:8px;font-weight:600;}
+    .consensus-verdict{font-family:'Syne',sans-serif;font-size:clamp(1.3rem,4vw,2rem);font-weight:800;margin-bottom:8px;text-shadow:0 2px 8px rgba(0,0,0,0.3);}
     .consensus-desc{opacity:0.68;font-size:0.84rem;max-width:440px;margin:0 auto;}
-    .consensus-score{font-size:clamp(2.2rem,7vw,3rem);font-weight:800;font-family:'Syne',sans-serif;margin:11px 0 4px;}
+    .consensus-score{font-size:clamp(2.6rem,8vw,3.5rem);font-weight:900;font-family:'Syne',sans-serif;margin:16px 0 8px;text-shadow:0 4px 12px rgba(0,0,0,0.4);}
     .consensus-badges{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:11px;}
-    .c-badge{background:rgba(255,255,255,0.14);border-radius:100px;padding:4px 11px;font-size:0.72rem;font-weight:600;}
+    .c-badge{background:rgba(255,255,255,0.18);border-radius:100px;padding:6px 14px;font-size:0.75rem;font-weight:600;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.2);transition:all .2s;}
+    .c-badge:hover{background:rgba(255,255,255,0.25);transform:scale(1.05);}
  
     /* ── AUTH LINK BUTTON ── */
     .auth-link-btn{background:none;border:none;color:var(--p500);font-weight:700;cursor:pointer;font-size:inherit;padding:0;text-decoration:underline;}
@@ -1084,7 +1088,7 @@
       <div class="analysis-progress" id="progressBox"><div class="progress-title">⏳ Analisando...</div><div class="progress-steps" id="progressSteps"></div></div>
       <div class="results-grid" id="resultsGrid"></div>
       <div class="consensus-box" id="consensusBox">
-        <div class="consensus-label">VEREDITO CONSOLIDADO</div>
+        <div class="consensus-label" id="consensusLabel">VEREDITO CONSOLIDADO</div>
         <div class="consensus-score" id="consensusScore">—</div>
         <div class="consensus-verdict" id="consensusVerdict">—</div>
         <div class="consensus-desc" id="consensusDesc">—</div>
@@ -2256,12 +2260,12 @@ function withTimeout(promise,ms){
 // Mensagens de erro amigáveis
 function friendlyError(msg){
   if(!msg) return 'Erro desconhecido.';
-  if(/failed to fetch|network|cors/i.test(msg)) return '⚠️ Erro de rede ou CORS — verifique se a chave API é válida e se há conexão com a internet.';
-  if(/401|unauthorized|invalid.*key|incorrect.*key/i.test(msg)) return '🔑 Chave API inválida ou sem permissão. Verifique a chave na seção Chaves.';
-  if(/403|forbidden/i.test(msg)) return '🚫 Acesso negado pela API. Verifique as permissões da sua chave.';
-  if(/429|rate.limit|quota/i.test(msg)) return '⏳ Limite de requisições atingido. Aguarde alguns segundos e tente novamente.';
-  if(/413|too.large|payload/i.test(msg)) return '📦 Arquivo muito grande para esta API. Use uma imagem menor.';
-  if(/500|502|503|504/i.test(msg)) return '🔧 Servidor da API indisponível. Tente novamente em instantes.';
+  if(/failed to fetch|network|cors/i.test(msg)) return 'Erro de conexao de rede. Verifique sua internet e se a chave API esta configurada corretamente.';
+  if(/401|unauthorized|invalid.*key|incorrect.*key/i.test(msg)) return 'Chave API invalida ou expirada. Acesse a secao Chaves e insira uma chave valida.';
+  if(/403|forbidden/i.test(msg)) return 'Acesso negado. Sua chave API nao tem permissao para usar este servico.';
+  if(/429|rate.limit|quota/i.test(msg)) return 'Limite de requisicoes atingido. Aguarde alguns minutos antes de tentar novamente.';
+  if(/413|too.large|payload/i.test(msg)) return 'Arquivo muito grande. Reduza o tamanho da imagem e tente novamente.';
+  if(/500|502|503|504/i.test(msg)) return 'Servidor da API indisponivel no momento. Tente novamente em alguns instantes.';
   if(/404|not found/i.test(msg)) return '🔍 Recurso não encontrado (404). Verifique o endpoint ou o arquivo.';
   if(/tempo esgotado/i.test(msg)) return msg;
   return `Erro: ${msg}`;
@@ -2429,11 +2433,15 @@ function renderResult(id,r){
 function renderConsensus(results){
   const avg=Math.round(results.reduce((s,r)=>s+r.prob,0)/results.length);
   const fakes=results.filter(r=>r.verdict==='fake').length,reals=results.filter(r=>r.verdict==='real').length;
+  const verdict=avg>65?'fake':avg<35?'real':'uncertain';
+  const box=document.getElementById('consensusBox');
+  box.className='consensus-box '+verdict;
   document.getElementById('consensusScore').textContent=avg+'%';
-  document.getElementById('consensusVerdict').textContent=avg>65?'DEEPFAKE DETECTADO':avg<35?'VÍDEO AUTÊNTICO':'RESULTADO INCONCLUSIVO';
-  document.getElementById('consensusDesc').textContent=avg>65?`${fakes}/${results.length} IAs identificaram manipulação.`:avg<35?`${reals}/${results.length} IAs classificaram como autêntico.`:'IAs divergiram. Análise especializada recomendada.';
+  document.getElementById('consensusLabel').textContent=avg>65?'ALERTA DE DEEPFAKE':avg<35?'CONTEUDO AUTENTICO':'ANALISE INCONCLUSIVA';
+  document.getElementById('consensusVerdict').textContent=avg>65?'DEEPFAKE DETECTADO':avg<35?'VIDEO AUTENTICO':'RESULTADO INCONCLUSIVO';
+  document.getElementById('consensusDesc').textContent=avg>65?`${fakes} de ${results.length} IAs identificaram padroes de manipulacao. Recomenda-se cautela ao compartilhar.`:avg<35?`${reals} de ${results.length} IAs confirmaram autenticidade. Conteudo parece genuino.`:'As IAs divergiram. Analise especializada recomendada.';
   document.getElementById('consensusBadges').innerHTML=results.map(r=>`<span class="c-badge">${AI_CONFIGS[r.id].logo} ${r.prob}%</span>`).join('');
-  document.getElementById('consensusBox').classList.add('show');
+  box.classList.add('show');
 }
  
 /* ══════════════════════════════════════
