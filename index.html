@@ -535,11 +535,11 @@
     .prob-fill.low{background:linear-gradient(90deg,#059669,#34d399);}
     .result-reasoning{font-size:0.77rem;color:#4b3a6e;line-height:1.6;background:var(--p50);border-radius:7px;padding:9px;border-left:3px solid var(--p300);}
     .result-reasoning strong{color:var(--p600);}
-    .consensus-box{background:linear-gradient(135deg,#1a0d2e,#2d1a4a);color:#fff;border-radius:16px;padding:32px 24px;margin-top:20px;display:none;text-align:center;box-shadow:0 16px 48px rgba(208,132,255,0.25);border:1px solid rgba(208,132,255,0.2);backdrop-filter:blur(10px);position:relative;overflow:hidden;}
+    .consensus-box{background:linear-gradient(135deg,#1a0d2e,#2d1a4a);color:#fff;border-radius:20px;padding:40px 28px;margin-top:28px;margin-bottom:20px;display:none;text-align:center;box-shadow:0 8px 24px rgba(208,132,255,0.12);border:1px solid rgba(208,132,255,0.15);backdrop-filter:blur(10px);position:relative;overflow:hidden;transition:all .3s ease;}
     .consensus-box.show{display:block;animation:fadeUp .6s cubic-bezier(0.34,1.56,0.64,1);}
-    .consensus-label{font-size:0.72rem;opacity:0.75;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:8px;font-weight:600;}
+    .consensus-label{font-size:0.73rem;opacity:0.7;letter-spacing:1.3px;text-transform:uppercase;margin-bottom:12px;font-weight:600;}
     .consensus-verdict{font-family:'Syne',sans-serif;font-size:clamp(1.3rem,4vw,2rem);font-weight:800;margin-bottom:8px;text-shadow:0 2px 8px rgba(0,0,0,0.3);}
-    .consensus-desc{opacity:0.68;font-size:0.84rem;max-width:440px;margin:0 auto;}
+    .consensus-desc{opacity:0.72;font-size:0.85rem;max-width:480px;margin:0 auto;line-height:1.6;}
     .consensus-score{font-size:clamp(2.6rem,8vw,3.5rem);font-weight:900;font-family:'Syne',sans-serif;margin:16px 0 8px;text-shadow:0 4px 12px rgba(0,0,0,0.4);}
     .consensus-badges{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:11px;}
     .c-badge{background:rgba(255,255,255,0.18);border-radius:100px;padding:6px 14px;font-size:0.75rem;font-weight:600;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.2);transition:all .2s;}
@@ -2430,21 +2430,24 @@ function renderResult(id,r){
 function renderConsensus(results){
   const avg=Math.round(results.reduce((s,r)=>s+r.prob,0)/results.length);
   const fakes=results.filter(r=>r.verdict==='fake').length,reals=results.filter(r=>r.verdict==='real').length;
-  const verdict=avg>65?'fake':avg<35?'real':'uncertain';
   const box=document.getElementById('consensusBox');
-  // box.className='consensus-box '+verdict; // Removed dynamic color classes
   document.getElementById('consensusScore').textContent=avg+'%';
-  document.getElementById('consensusLabel').textContent=avg>65?'ALERTA: DEEPFAKE DETECTADO':avg<35?'CONTEUDO AUTENTICO':'RESULTADO INCONCLUSIVO';
-  document.getElementById('consensusVerdict').textContent=avg>65?'Manipulacao Identificada':avg<35?'Imagem Autentica':'Resultado Incerto';
-  document.getElementById('consensusDesc').textContent=avg>65?`${fakes} de ${results.length} IAs identificaram padroes de manipulacao. Recomenda-se cautela ao compartilhar.`:avg<35?`${reals} de ${results.length} IAs confirmaram autenticidade. Conteudo parece genuino.`:'As IAs divergiram. Analise especializada recomendada.';
+  if(avg<35){
+    document.getElementById('consensusLabel').textContent='CONTEUDO AUTENTICO';
+    document.getElementById('consensusVerdict').textContent='Imagem Autentica';
+    document.getElementById('consensusDesc').textContent=`${reals} de ${results.length} IAs confirmaram autenticidade. Conteudo parece genuino.`;
+  }else if(avg>65){
+    document.getElementById('consensusLabel').textContent='ALERTA: DEEPFAKE DETECTADO';
+    document.getElementById('consensusVerdict').textContent='Manipulacao Identificada';
+    document.getElementById('consensusDesc').textContent=`${fakes} de ${results.length} IAs identificaram padroes de manipulacao. Recomenda-se cautela ao compartilhar.`;
+  }else{
+    document.getElementById('consensusLabel').textContent='RESULTADO INCONCLUSIVO';
+    document.getElementById('consensusVerdict').textContent='Resultado Incerto';
+    document.getElementById('consensusDesc').textContent='As IAs divergiram. Analise especializada recomendada.';
+  }
   document.getElementById('consensusBadges').innerHTML=results.map(r=>`<span class="c-badge">${AI_CONFIGS[r.id].logo} ${r.prob}%</span>`).join('');
   box.classList.add('show');
 }
- 
-/* ══════════════════════════════════════
-   UTILS
-══════════════════════════════════════ */
-async function stepRun(id,delay){const el=document.getElementById('ps-'+id);if(el){el.classList.add('running');el.querySelector('.step-dot').textContent='◉';}if(delay>0)await sleep(delay);}
 function markDone(id){const el=document.getElementById('ps-'+id);if(el){el.classList.remove('running');el.classList.add('done');el.querySelector('.step-dot').textContent='✓';}}
 function sleep(ms){return new Promise(r=>setTimeout(r,ms));}
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3200);}
