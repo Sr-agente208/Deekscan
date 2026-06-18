@@ -1423,10 +1423,10 @@ const state={
   get remaining(){if(!this.plan)return 0;if(this.plan.monthlyLimit===Infinity)return Infinity;return Math.max(0,this.plan.monthlyLimit-this.usedCount)},
 };
 const AI_CONFIGS={
-  claude: {name:'Claude (Anthropic)', model:'claude-opus-4-6',  logo:'🤖', call:callClaude},
+  claude: {name:'Claude (Anthropic)', model:'claude-3-5-sonnet-20240620',  logo:'🤖', call:callClaude},
   gpt:    {name:'GPT-4o (OpenAI)',    model:'gpt-4o',            logo:'🧠', call:callGPT},
 
-  isitai: {name:'IsItAI (Detector)', model:'isitai-detect-v1',  logo:'🔍', call:callIsItAI},
+  isitai: {name:'IsItAI (Detector)', model:'detect-img',  logo:'🔍', call:callIsItAI},
 };
 
 /* ══════════════════════════════════════
