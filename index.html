@@ -1419,7 +1419,7 @@
  
 <div class="toast" id="toast"></div>
  
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 /* ══════════════════════════════════════
    PLANS
 ══════════════════════════════════════ */
@@ -2261,6 +2261,7 @@ function friendlyError(msg){
   if(/429|rate.limit|quota/i.test(msg)) return '⏳ Limite de requisições atingido. Aguarde alguns segundos e tente novamente.';
   if(/413|too.large|payload/i.test(msg)) return '📦 Arquivo muito grande para esta API. Use uma imagem menor.';
   if(/500|502|503|504/i.test(msg)) return '🔧 Servidor da API indisponível. Tente novamente em instantes.';
+  if(/404|not found/i.test(msg)) return '🔍 Recurso não encontrado (404). Verifique o endpoint ou o arquivo.';
   if(/tempo esgotado/i.test(msg)) return msg;
   return `Erro: ${msg}`;
 }
