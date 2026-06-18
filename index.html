@@ -2291,7 +2291,7 @@ async function resizeForAPI(b64,mime,maxPx=1120){
 async function callClaude(ctx){
   const {data,mime}=await resizeForAPI(state.fileData,state.fileType||'image/jpeg');
   const body={
-    model:'claude-opus-4-5',  // modelo correto
+    model:'claude-3-5-sonnet-20240620',  // modelo estável e atualizado
     max_tokens:1024,
     messages:[{role:'user',content:[
       {type:'image',source:{type:'base64',media_type:mime,data}},
@@ -2352,7 +2352,6 @@ async function callGPT(ctx){
 async function callIsItAI(ctx){
   const mime=state.fileType||'image/jpeg';
   const ext=mime.includes('png')?'png':mime.includes('webp')?'webp':'jpg';
-  // Converte base64 → Blob via fetch (mais seguro que atob para arquivos grandes)
   const dataUrl=`data:${mime};base64,${state.fileData}`;
   const blobRes=await fetch(dataUrl);
   const blob=await blobRes.blob();
@@ -2360,42 +2359,26 @@ async function callIsItAI(ctx){
   formData.append('file',blob,`image.${ext}`);
   let res;
   try{
-    res=await fetch('https://api.isitai.com/v1/image/detect',{   // endpoint correto v1
+    res=await fetch('https://api.isitai.com/detect-img',{
       method:'POST',
-      headers:{'Authorization':`Bearer ${state.apiKeys['isitai']}`},
+      headers:{'Authorization':`Bearer ${state.apiKeys['isitai']}`,'accept':'application/json'},
       body:formData
     });
   }catch(netErr){
-    // Tenta endpoint alternativo
-    try{
-      res=await fetch('https://api.isitai.com/detect-img',{
-        method:'POST',
-        headers:{'Authorization':`Bearer ${state.apiKeys['isitai']}`,'accept':'application/json'},
-        body:formData
-      });
-    }catch(e2){
-      throw new Error('Não foi possível conectar à API IsItAI. CORS pode estar bloqueando — tente via proxy ou verifique a documentação da IsItAI.');
-    }
+    throw new Error('Não foi possível conectar à API IsItAI. CORS pode estar bloqueando ou erro de rede.');
   }
   if(!res.ok){
     const e=await res.json().catch(()=>({}));
-    throw new Error(e.message||e.error||e.detail||`HTTP ${res.status}`);
+    throw new Error(e.detail||e.message||e.error||`HTTP ${res.status}`);
   }
   const data=await res.json();
-  let rawScore=
-    typeof data.score==='number'?data.score:
-    typeof data.probability==='number'?data.probability:
-    typeof data.confidence==='number'?data.confidence:
-    typeof data.is_ai==='number'?data.is_ai:
-    typeof data.result==='number'?data.result:
-    typeof data.isAI==='boolean'?(data.isAI?0.85:0.15):0.5;
-  const score=rawScore>1?rawScore/100:rawScore;
-  const prob=Math.round(score*100);
-  const verdict=prob>65?'fake':prob<35?'real':'uncertain';
+  // Documentação diz: probability (0 a 1) e predicted_label ("AI" ou "Human")
+  const prob=Math.round((data.probability||0)*100);
+  const verdict=data.predicted_label==='AI'?'fake':(data.predicted_label==='Human'?'real':'uncertain');
   const reasoning=
-    data.explanation||data.description||data.message||data.detail||
-    (prob>65?'IsItAI detectou padrões consistentes com imagem gerada por IA.':
-     prob<35?'IsItAI classificou a imagem como provavelmente autêntica.':
+    (data.potential_method?`Método detectado: ${data.potential_method}. `:'')+
+    (verdict==='fake'?'IsItAI detectou padrões consistentes com imagem gerada por IA.':
+     verdict==='real'?'IsItAI classificou a imagem como provavelmente autêntica.':
      'IsItAI não obteve conclusão definitiva.');
   return{prob,verdict,reasoning};
 }
